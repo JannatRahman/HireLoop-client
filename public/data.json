@@ -1,0 +1,86 @@
+[
+  {
+    "title": "Frontend Developer",
+    "description": "Showcase your commitment to diversity and inclusion by highlighting initiatives",
+    "location": "New York, USA",
+    "workType": "Hybrid",
+    "salary": "€25–€40/hour"
+  },
+  {
+    "title": "UI/UX Engineer",
+    "description": "Craft pixel-perfect user interfaces and shape the design tokens for our core web applications",
+    "location": "Berlin, DE",
+    "workType": "Remote",
+    "salary": "€30–€50/hour"
+  },
+  {
+    "title": "React Specialist",
+    "description": "Optimize high-performance client dashboards and micro-frontend architectures",
+    "location": "London, UK",
+    "workType": "On-site",
+    "salary": "£40–£65/hour"
+  },
+  {
+    "title": "Fullstack Engineer",
+    "description": "Bridge the gap between fluid user experiences and scalable Next.js serverless backends",
+    "location": "Amsterdam, NL",
+    "workType": "Hybrid",
+    "salary": "€35–€55/hour"
+  },
+  {
+    "title": "Mobile App Developer",
+    "description": "Build premium cross-platform interface layouts using modern declarative frameworks",
+    "location": "San Francisco, USA",
+    "workType": "Remote",
+    "salary": "$45–$70/hour"
+  },
+  {
+    "title": "Design System Lead",
+    "description": "Architect comprehensive component libraries and champion consistency across product teams",
+    "location": "Paris, FR",
+    "workType": "Hybrid",
+    "salary": "€40–€60/hour"
+  },
+  {
+    "title": "Web Performance Expert",
+    "description": "Audit and maximize Core Web Vitals, rendering cycles, and dynamic asset delivery paths",
+    "location": "Remote, EU",
+    "workType": "Remote",
+    "salary": "€50–€75/hour"
+  },
+  {
+    "title": "Growth Engineer",
+    "description": "Develop seamless onboarding workflows and experiment with features to drive core activation",
+    "location": "Austin, USA",
+    "workType": "Hybrid",
+    "salary": "$35–$50/hour"
+  },
+  {
+    "title": "Accessibility Specialist",
+    "description": "Ensure digital web products achieve strict WCAG compliance and inclusive semantic markup",
+    "location": "Toronto, CA",
+    "workType": "Remote",
+    "salary": "$30–$48/hour"
+  },
+  {
+    "title": "Senior Product Engineer",
+    "description": "Own product verticals end-to-end, from technical concept mapping down to frontend deployment",
+    "location": "Stockholm, SE",
+    "workType": "On-site",
+    "salary": "€45–€65/hour"
+  },
+  {
+    "title": "Creative Developer",
+    "description": "Animate high-impact marketing visuals using interactive WebGL and canvas micro-interactions",
+    "location": "Tokyo, JP",
+    "workType": "Hybrid",
+    "salary": "¥5k–¥8k/hour"
+  },
+  {
+    "title": "Frontend Architect",
+    "description": "Define the overarching frontend infrastructure strategy, tooling setups, and CI/CD pipelines",
+    "location": "Zurich, CH",
+    "workType": "Remote",
+    "salary": "€60–€90/hour"
+  }
+]
