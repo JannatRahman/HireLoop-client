@@ -22,7 +22,7 @@ export default function JobCards() {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error loading JSON data:", error);
+        // console.error("Error loading JSON data:", error);
         setLoading(false);
       });
   }, []);

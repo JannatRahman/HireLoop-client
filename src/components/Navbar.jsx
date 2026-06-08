@@ -9,7 +9,7 @@ import { useState } from "react";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {data: session, isPending} = useSession()
-  console.log('session in Nav', session, isPending, 'Is Pending');
+  // console.log('session in Nav', session, isPending, 'Is Pending');
   const user = session?.user;
 
   const handleSignOut = async () => {
