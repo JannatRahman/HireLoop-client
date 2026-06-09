@@ -16,6 +16,7 @@ import {
 } from '@heroui/react';
 import { ArrowUpToLine, Globe, Factory, ArrowRight, Pencil, ChevronDown } from '@gravity-ui/icons';
 import { createCompany } from '@/lib/api/core/server';
+import Image from 'next/image';
 
 // Layout Shared Style Constants matching your design image
 const textInputClass = "w-full bg-zinc-900/50 border border-zinc-800 text-white rounded-lg px-3 py-2.5 outline-none placeholder:text-zinc-600 focus:border-zinc-700 transition";
@@ -30,7 +31,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
   const [company, setCompany] = useState(recruiterCompany); 
   const [isEditing, setIsEditing] = useState(false);
   const [errors, setErrors] = useState({});
-
+// console.log("Initial Company Data in CompanyProfile:", company);
   // Auxiliary Upload States
   const [logoUrl, setLogoUrl] = useState('');
   const [isUploading, setIsUploading] = useState(false);
@@ -111,7 +112,7 @@ export default function CompanyProfile({ recruiter, recruiterCompany }) {
     }
   
 
-    console.log("Submitted Company Profile Data:", newCompanyData);
+    // console.log("Submitted Company Profile Data:", newCompanyData);
 const payload = await createCompany(newCompanyData);
    if (payload.insertedId) {
   const updatedCompany = {
@@ -179,7 +180,7 @@ const payload = await createCompany(newCompanyData);
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-zinc-900 pb-6">
           <div className="flex items-center gap-4">
             {company.logo ? (
-              <img src={company.logo} alt={company.name} className="w-16 h-16 rounded-xl object-contain bg-zinc-900 p-2 border border-zinc-800" />
+              <Image src={company.logo} width={16} height={16} alt={company.name} className="w-16 h-16 rounded-xl object-contain bg-zinc-900 p-2 border border-zinc-800" />
             ) : (
               <div className="w-16 h-16 rounded-xl bg-zinc-900 flex items-center justify-center border border-zinc-800">
                 <Factory size={24} className="text-zinc-600" />

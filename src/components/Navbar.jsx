@@ -4,9 +4,11 @@ import { useSession, signOut} from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import { router } from "better-auth/api";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Navbar() {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {data: session, isPending} = useSession()
   // console.log('session in Nav', session, isPending, 'Is Pending');
