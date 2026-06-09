@@ -88,10 +88,10 @@ export default function JobCards() {
 
               {/* Action Footer */}
               <div className="mt-6 pt-2">
-                <button className="text-sm font-medium text-white hover:text-neutral-300 transition-colors flex items-center gap-1 group">
+                <Button className="text-sm font-medium text-white hover:text-neutral-300 transition-colors flex items-center gap-1 group">
                   Apply Now 
                   <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Button>
               </div>
             </Card>
           ))}
