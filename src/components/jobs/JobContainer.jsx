@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-
-import JobSectionCard from './JobSectionCard';
 import JobFilter from './JobFilter';
+import JobSectionCard from './JobSectionCard';
+
 
 
 

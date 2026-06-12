@@ -15,7 +15,7 @@ import {
   toast
 } from "@heroui/react";
 // Gravity UI Icons
-import { Globe, ShieldCheck, ArrowUpRight } from "@gravity-ui/icons";
+import { Globe, ShieldCheck, ArrowUpRight, Briefcase } from "@gravity-ui/icons";
 import { createJob } from "@/lib/actions/job";
 import { redirect, useRouter } from "next/navigation";
 
@@ -146,10 +146,18 @@ export default function PostJobForm({ company }) {
           <p className="text-sm text-[#a1a1aa] mt-1">
             Fill out the details to broadcast your job opening across our platform.
           </p>
+
+          <div className="mt-4 inline-flex items-center gap-2 bg-zinc-900/50 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs bg-zinc-400">
+            <Briefcase size={14} className="text-zinc-500" />
+            Posting as: <span className="font-semibold text-zinc-300">{company.name}</span>
+            <span className="text-emerald-500 font-medium px-1.5 py-0.5 rounded border border-emerald-900/50">{company.status}</span>
+          </div>
         </div>
 
+        {company.status !== 'Approved' && <div className="p-5 font-bold  text-center text-xl">Please wait to get approval</div>}
+
         {/* Form Container */}
-        <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-8">
+        {company.status === 'Approved' && <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-8">
 
           {/* Global Guard Error Banners */}
           {errors.global && (
@@ -265,8 +273,8 @@ export default function PostJobForm({ company }) {
                   type="button"
                   onClick={toggleRemote}
                   className={`w-full flex items-center justify-center gap-2 h-14 rounded-xl border text-sm font-medium transition-all ${formData.isRemote
-                      ? "bg-[#3f3f46] text-white border-[#52525b]"
-                      : "bg-[#18181b] border-[#27272a] text-[#a1a1aa] hover:border-[#3f3f46]"
+                    ? "bg-[#3f3f46] text-white border-[#52525b]"
+                    : "bg-[#18181b] border-[#27272a] text-[#a1a1aa] hover:border-[#3f3f46]"
                     }`}
                 >
                   <Globe className="w-4 h-4" />
@@ -424,7 +432,7 @@ export default function PostJobForm({ company }) {
               Publish Job
             </Button>
           </div>
-        </form>
+        </form>}
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ import {
 } from "@heroui/react";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { signIn } from "@/lib/auth-client";
+import { useRouter, useSearchParams } from "next/navigation";
 
 
 export default function SigninPage() {
@@ -21,6 +22,11 @@ export default function SigninPage() {
     email: "",
     password: "",
   });
+  
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("callbackUrl") || "/";
+  // console.log("Redirect URL after sign in:", redirectTo); // Debugging log
 
   // UI Feedback & Pending States
   const [isPending, setIsPending] = useState(false);
@@ -63,8 +69,7 @@ export default function SigninPage() {
         setIsPending(false);
         setSuccess("Logged in successfully! Redirecting...");
         setFormData({ email: "", password: "" });
-
-        window.location.href = "/";
+        router.push(redirectTo);
       },
       onError: (ctx) => {
         setIsPending(false);
@@ -166,7 +171,7 @@ export default function SigninPage() {
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
             New to HireLoop?{" "}
             <Link
-              href="/auth/signup"
+              href={`/auth/signup?callbackUrl=${redirectTo}`}
               className="text-blue-600 hover:underline font-medium transition-all dark:text-blue-400"
             >
               Create An Account

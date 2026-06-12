@@ -1,9 +1,5 @@
-import React from 'react';
-
-
-import { getJobs } from '@/lib/api/jobs';
-import JobContainer from '@/components/jobs/JobContainer';
-
+import JobContainer from "@/components/jobs/JobContainer";
+import { getJobs } from "@/lib/api/jobs";
 
 
 const JobCard = async () => {

@@ -1,9 +1,10 @@
-import { getJobById } from '@/lib/api/jobs';
+
 import React from 'react';
 import Link from 'next/link';
 // import ApplyButton from '@/components/ApplyButton'; // Adjust this import path based on your folder structure
 import Image from 'next/image';
 import { Button } from '@heroui/react';
+import { getJobById } from '@/lib/api/jobs';
 
 const JobDetailPage = async ({ params }) => {
   const { id } = await params;
@@ -106,7 +107,9 @@ const JobDetailPage = async ({ params }) => {
             <p className="font-semibold text-red-600">{formattedDeadline}</p>
           </div>
           <div>
-          <Button className={'w-full'}>Apply Now</Button>
+          <Link
+          href={`/jobs/${id}/apply`}
+          className={'w-full  text-white font-semibold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded-md  shadow-md transition-colors flex  items-center justify-center'}>Apply For This Job</Link>
           {/* <ApplyButton jobId={jobIdString} jobTitle={job.title} /> */}
         </div>
         </div>

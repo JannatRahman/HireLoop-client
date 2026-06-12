@@ -14,6 +14,7 @@ import {
 import { Description, Radio, RadioGroup } from "@heroui/react";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { signUp } from "@/lib/auth-client"; // Adjust path to your authClient file
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SignupPage() {
   // Form States
@@ -23,6 +24,10 @@ export default function SignupPage() {
     password: "",
   });
   const [role, setRole] = useState("seeker");
+  
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("callbackUrl") || "/";
 
   // UI Feedback & Pending States
   const [isPending, setIsPending] = useState(false);
@@ -53,13 +58,14 @@ export default function SignupPage() {
       setError("All fields are required.");
       return;
     }
-
+   const plan = role === 'seeker' ? 'seeker_free' : 'recruiter_free';
 
     await signUp.email({
       email: formData.email,
       password: formData.password,
       name: formData.name,
-      role: role
+      role: role,
+      plan
     }, {
       onRequest: () => {
         setIsPending(true);
@@ -68,7 +74,7 @@ export default function SignupPage() {
         setIsPending(false);
         setSuccess("Account created successfully! You can now sign in.");
         setFormData({ name: "", email: "", password: "" });
-        window.location.href = "/";
+        router.push(redirectTo);
       },
       onError: (ctx) => {
         setIsPending(false);
@@ -211,7 +217,7 @@ export default function SignupPage() {
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
             Already have an account?{" "}
             <Link
-              href="/auth/signin"
+              href={`/auth/signin?callbackUrl=${redirectTo}`}
               className="text-blue-600 hover:underline font-medium transition-all dark:text-blue-400"
             >
               Sign In

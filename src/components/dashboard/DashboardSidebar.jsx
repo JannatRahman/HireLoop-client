@@ -1,11 +1,16 @@
-"use client";
-import { LayoutSideContentLeft, Bell, Envelope, Briefcase, Gear, House, Magnifier, Person } from "@gravity-ui/icons";
+
+
+import { getUserSession } from "@/lib/api/core/session";
+import { LayoutSideContentLeft, Bell, Envelope, Briefcase, Gear, House, Magnifier, Person, Bookmark, FileText, CreditCard, HouseFill, GearBranches } from "@gravity-ui/icons";
 import { Button, Drawer } from "@heroui/react";
 import { nav } from "motion/react-client";
 import Link from "next/link";
 
-export function DashboardSidebar() {
-  const navItems = [
+export async function DashboardSidebar() {
+
+  const user = await getUserSession();
+   
+  const recruiterNavLinks = [
     { icon: House, href: "/dashboard/recruiter", label: "Home" },
     { icon: Magnifier, href: "/dashboard/recruiter/jobs", label: "Jobs" },
     { icon: Bell, href: "/dashboard/recruiter/jobs/new", label: "Publish A Job" },
@@ -15,6 +20,33 @@ export function DashboardSidebar() {
     { icon: Person, href: "/profile", label: "Profile" },
     { icon: Gear, href: "/settings", label: "Settings" },
   ];
+
+  const seekerNavLinks = [
+  { icon: HouseFill, href: "/dashboard/seeker", label: "Dashboard" },
+  { icon: Magnifier, href: "/dashboard/seeker/jobs", label: "Jobs" },
+  { icon: Bookmark, href: "/dashboard/seeker/saved-jobs", label: "Saved Jobs" },
+  { icon: FileText, href: "/dashboard/seeker/applications", label: "Applications" },
+  { icon: CreditCard, href: "/dashboard/seeker/billing", label: "Billing" },
+  { icon: GearBranches, href: "/dashboard/seeker/settings", label: "Settings" }
+];
+
+const adminNavLinks=  [
+  { icon: LayoutSideContentLeft, href: "/dashboard/admin", label: "Dashboard" },
+  { icon: Person, href: "/dashboard/admin/users", label: "Users" },
+  { icon: House, href: "/dashboard/admin/companies", label: "Companies" },
+  { icon: Briefcase, href: "/dashboard/admin/jobs", label: "Jobs" },
+  { icon: CreditCard, href: "/dashboard/admin/payments", label: "Payments" },
+  { icon: Gear, href: "/dashboard/admin/settings", label: "Settings" },
+];
+
+const navLinksMap = {
+  seeker: seekerNavLinks,
+  recruiter: recruiterNavLinks,
+  admin: adminNavLinks
+}
+  
+
+  const navItems = navLinksMap[user?.role || 'seeker'];
 
   const navContent = (
     <nav className="flex flex-col gap-1">

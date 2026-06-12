@@ -22,10 +22,7 @@ export default function Navbar() {
     },
   },
     })
-
-  }
-
-
+}
   const navLinks = [
     {
       label: "Browse Jobs",
@@ -37,9 +34,24 @@ export default function Navbar() {
     },
     {
       label: "Pricing",
-      href: "/pricing",
+      href: "/plan",
     },
   ];
+
+  const dashboardLinks = {
+    seeker: '/dashboard/seeker',
+    recruiter: '/dashboard/recruiter',
+    admin: '/dashboard/admin'
+  }
+
+  if(user?.email){
+    navLinks.push(
+      {
+        label: 'Dashboard',
+        href: dashboardLinks[user?.role || 'seeker']
+      }
+    )
+  }
 
   return (
     <nav className="sticky top-0 z-50 bg-[#0B0F19]/80 backdrop-blur-xl">
