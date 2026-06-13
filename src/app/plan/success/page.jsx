@@ -29,7 +29,7 @@ export default async function Success({ searchParams }) {
     }
 
     const result = await createSubscription(subsInfo);
-    console.log(result)
+    // console.log(result)
     
     return (
       <main className="min-h-screen bg-gray-1000 flex items-center justify-center p-4 antialiased">

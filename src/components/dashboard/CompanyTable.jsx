@@ -9,20 +9,21 @@ import { toast } from 'react-toastify';
 
 
 const CompanyTable = ({ companies }) => {
+  // console.log(companies);
 
   const handleApprove = async (id) => {
     const result = await updateCompany(id, { status: 'Approved' })
     if (result.modifiedCount) {
-      toast.success('Your application hav been approved')
-      console.log(`Approved company with ID: ${id}`, result);
+      toast.success('Application hav been approved')
+      .log(`Approved company with ID: ${id}`, result);
     }
   };
 
   const handleReject = async (id) => {
     const result = await updateCompany(id, { status: 'Rejected' })
     if (result.modifiedCount) {
-      toast.warning('Your application hav been rejected')
-      
+      toast.warning('Application hav been rejected')
+
     }
   };
 
@@ -171,21 +172,21 @@ const CompanyTable = ({ companies }) => {
           </Table.Content>
         </Table.ScrollContainer>
         <Table.Footer className="bg-[#161616] py-4 px-6 border-t border-[#262626] flex items-center justify-between">
-            <div className="text-xs text-gray-500">
-              Showing <span className="text-gray-300 font-medium">1-{companies.length}</span> of <span className="text-gray-300 font-medium">{companies.length}</span> companies
-            </div>
-            <div className="flex items-center gap-1">
-              <button className="p-1.5 rounded bg-[#222222] text-gray-500 hover:text-gray-300 transition-colors">
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button className="px-3 py-1 rounded text-xs bg-white text-black font-semibold">1</button>
-              <button className="px-3 py-1 rounded text-xs text-gray-400 hover:bg-[#222222] transition-colors">2</button>
-              <button className="px-3 py-1 rounded text-xs text-gray-400 hover:bg-[#222222] transition-colors">3</button>
-              <button className="p-1.5 rounded bg-[#222222] text-gray-400 hover:text-gray-300 transition-colors">
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </Table.Footer>
+          <div className="text-xs text-gray-500">
+            Showing <span className="text-gray-300 font-medium">1-{companies.length}</span> of <span className="text-gray-300 font-medium">{companies.length}</span> companies
+          </div>
+          <div className="flex items-center gap-1">
+            <button className="p-1.5 rounded bg-[#222222] text-gray-500 hover:text-gray-300 transition-colors">
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button className="px-3 py-1 rounded text-xs bg-white text-black font-semibold">1</button>
+            <button className="px-3 py-1 rounded text-xs text-gray-400 hover:bg-[#222222] transition-colors">2</button>
+            <button className="px-3 py-1 rounded text-xs text-gray-400 hover:bg-[#222222] transition-colors">3</button>
+            <button className="p-1.5 rounded bg-[#222222] text-gray-400 hover:text-gray-300 transition-colors">
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </Table.Footer>
       </Table>
     </div>
   );

@@ -8,7 +8,7 @@ const getRelativeTime = (dateString) => {
   const now = new Date();
   const appliedDate = new Date(dateString);
   const diffInMs = now - appliedDate;
-  
+
   const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
   const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
   const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
@@ -77,11 +77,11 @@ const SeekerApplicationPage = async () => {
                 <Table.Column className="bg-transparent border-b border-zinc-800 text-zinc-400 font-medium py-4 px-6 text-sm">Status</Table.Column>
                 <Table.Column className="bg-transparent border-b border-zinc-800 text-zinc-400 font-medium py-4 px-6 text-sm text-right">Action</Table.Column>
               </Table.Header>
-              
+
               <Table.Body>
                 {jobs.map((job) => {
                   const statusConfig = getStatusStyles(job.status || 'Applied');
-                  const workplaceType = job.workplaceType || 'Full-time • Remote'; 
+                  const workplaceType = job.workplaceType || 'Full-time • Remote';
 
                   return (
                     <Table.Row key={job._id.$oid} className="border-b border-zinc-800/50 hover:bg-zinc-900/40 transition-colors">
@@ -105,13 +105,13 @@ const SeekerApplicationPage = async () => {
 
                       {/* Applied Time Cell */}
                       <Table.Cell className="py-4 px-6 text-[15px] text-zinc-400">
-                        {getRelativeTime(job.createdAt.$date)}
+                        {getRelativeTime(job.createdAt)}
                       </Table.Cell>
 
                       {/* Status Cell */}
                       <Table.Cell className="py-4 px-6">
-                        <Chip 
-                          variant={statusConfig.variant} 
+                        <Chip
+                          variant={statusConfig.variant}
                           className={`px-3 py-1 text-xs font-semibold rounded-full tracking-wide ${statusConfig.className}`}
                         >
                           {job.status || 'Applied'}
@@ -120,8 +120,8 @@ const SeekerApplicationPage = async () => {
 
                       {/* Action Cell */}
                       <Table.Cell className="py-4 px-6 text-right">
-                        <Button 
-                          variant="light" 
+                        <Button
+                          variant="light"
                           className="text-zinc-400 hover:text-zinc-100 text-sm font-medium transition-colors"
                           size="sm"
                         >

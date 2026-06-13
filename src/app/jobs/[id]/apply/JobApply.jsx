@@ -49,7 +49,7 @@ const JobApply = ({ job, applicant }) => {
       additionalInfo: e.target.additionalInfo?.value || '',
     };
 
-    console.log('Submitting Application:', formData);
+    // console.log('Submitting Application:', formData);
     const res = await submitApplication(formData);
 
     if(res.insertedId) {
